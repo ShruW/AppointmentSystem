@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AppointmentSystem.Models.Appointment>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Appointment Details</h2>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoctorDetail.FirstName)
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.DoctorDetail.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorDetail.FirstName)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DoctorDetail.LastName)
+            </td>
+            <td>
+                    @Html.ActionLink("Reschedule", "Reschedule", new { id=item.AppointmentId }) |
+                    @Html.ActionLink("Cancel", "Cancel", new { id=item.AppointmentId })
+                </td>
+        </tr>
+    }
+
+</table>
