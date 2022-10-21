@@ -15,7 +15,6 @@ namespace AppointmentSystem.Models
         [Required]
         [Display(Name ="Doctor")]
         public IEnumerable<string> SelectedDoctor { get; set; }
-        //public int SelectedDoctor { get; set; }
 
 
         [Required]

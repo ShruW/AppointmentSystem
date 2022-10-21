@@ -36,23 +36,9 @@ namespace AppointmentSystem.Controllers
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
-                //using (EmployeeDBContext context = new EmployeeDBContext())
-                //{
-                //    bool IsValidUser = context.Users.Any(user => user.UserName.ToLower() ==
-                //         model.UserName.ToLower() && user.UserPassword == model.UserPassword);
-
-                    //int result = (int)cmd.Parameters["@Result"].Value;
-                //if (result == 1)
-                //{
-                   
-                //    FormsAuthentication.SetAuthCookie(login.UserId, false);
-                //    return RedirectToAction("Index", "Doctor");
-                //}
-                //else 
-                if (!(string.IsNullOrEmpty(cmd.Parameters["@Result"].Value.ToString())))//(result == 2)
+                
+                if (!(string.IsNullOrEmpty(cmd.Parameters["@Result"].Value.ToString())))
                 {
-                    //string s = HttpContext.User.Identity.Name;
-                    //string s = User.Identity;
                     FormsAuthentication.SetAuthCookie(login.UserId, false);
                     TempData["PatientId"]=(int)cmd.Parameters["@Result"].Value;
                     return RedirectToAction("NewAppointment", "Patient");
@@ -113,77 +99,5 @@ namespace AppointmentSystem.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
-
-        // GET: Home/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
-        //    // GET: Home/Create
-        //    public ActionResult Create()
-        //    {
-        //        return View();
-        //    }
-
-        //    // POST: Home/Create
-        //    [HttpPost]
-        //    public ActionResult Create(FormCollection collection)
-        //    {
-        //        try
-        //        {
-        //            // TODO: Add insert logic here
-
-        //            return RedirectToAction("Index");
-        //        }
-        //        catch
-        //        {
-        //            return View();
-        //        }
-        //    }
-
-        //    // GET: Home/Edit/5
-        //    public ActionResult Edit(int id)
-        //    {
-        //        return View();
-        //    }
-
-        //    // POST: Home/Edit/5
-        //    [HttpPost]
-        //    public ActionResult Edit(int id, FormCollection collection)
-        //    {
-        //        try
-        //        {
-        //            // TODO: Add update logic here
-
-        //            return RedirectToAction("Index");
-        //        }
-        //        catch
-        //        {
-        //            return View();
-        //        }
-        //    }
-
-        //    // GET: Home/Delete/5
-        //    public ActionResult Delete(int id)
-        //    {
-        //        return View();
-        //    }
-
-        //    // POST: Home/Delete/5
-        //    [HttpPost]
-        //    public ActionResult Delete(int id, FormCollection collection)
-        //    {
-        //        try
-        //        {
-        //            // TODO: Add delete logic here
-
-        //            return RedirectToAction("Index");
-        //        }
-        //        catch
-        //        {
-        //            return View();
-        //        }
-        //    }
     }
 }

@@ -34,16 +34,10 @@ namespace AppointmentSystem.Controllers
             DoctorsViewModel doctorsViewModel = new DoctorsViewModel();
             doctorsViewModel.DoctorsList = doctorsList;
             return View(doctorsViewModel);
-
-            // return View();
-
-            //var doctors = appointmentDBContext.DoctorDetails.ToList();
-            //var viewModel=new DoctorsViewModel { DoctorsList = doctors };
-            // return View(viewModel);
         }
 
         [HttpPost]
-        public string  NewAppointment(DoctorsViewModel doctorsViewModel)//FormCollection formCollection)
+        public string NewAppointment(DoctorsViewModel doctorsViewModel)//FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
@@ -61,74 +55,27 @@ namespace AppointmentSystem.Controllers
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-                //ViewBag.Message = "Your appointment is booked!";
                 return "Your appointment is booked!";
-                //return View(doctorsViewModel);
             }
             else
-                //ViewBag.Message= "Your appointment is not booked. Please re-enter the details!";
-            return "Your appointment is not booked. Please re-enter the details!"; ;
+                return "Your appointment is not booked. Please re-enter the details!"; ;
         }
         // GET: Patient/Details/5
         public ActionResult Details()
         {
-            //string conString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-            //SqlConnection con = new SqlConnection(conString);
-            //SqlCommand cmd = new SqlCommand("select * from Appointments where PatientId=@PatientId", con);
-            //cmd.CommandType = CommandType.Text;
-
-            //cmd.Parameters.AddWithValue("@PatientId", TempData["PatientId"]);
-
-            //con.Open();
-            //cmd.ExecuteReader();
-            //con.Close();
-
             AppointmentDBContext dbcontext = new AppointmentDBContext();
             List<Appointment> appointments = dbcontext.Appointments.ToList();
-            List<Appointment> appointmentList= appointments.Where(x => x.PatientId == (int)TempData["PatientId"]).ToList();
-            //App employee = dbcontext.Employees.Single(emp => emp.EmployeeId == id);
+            List<Appointment> appointmentList = appointments.Where(x => x.PatientId == (int)TempData["PatientId"]).ToList();
             return View(appointmentList);
         }
 
-        //public ActionResult Reschedule(Appointment appointment)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //    }
-        //}
-
-        //// GET: Patient/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        //// POST: Patient/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: Patient/Edit/5
         [HttpGet]
         public ActionResult Edit()
         {
             int id = (int)TempData["PatientId"];
-            AppointmentDBContext dBContext=new AppointmentDBContext();
-          PatientDetail patientDetail=  dBContext.PatientDetails.Single(x => x.PId ==id);
-        return View(patientDetail);
+            AppointmentDBContext dBContext = new AppointmentDBContext();
+            PatientDetail patientDetail = dBContext.PatientDetails.Single(x => x.PId == id);
+            return View(patientDetail);
         }
 
         // POST: Patient/Edit/5
@@ -143,10 +90,10 @@ namespace AppointmentSystem.Controllers
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@PId", patientDetail.PId);
-                cmd.Parameters.AddWithValue("@FirstName", patientDetail.FirstName); 
+                cmd.Parameters.AddWithValue("@FirstName", patientDetail.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", patientDetail.LastName);
-                cmd.Parameters.AddWithValue("@PhoneNumber", patientDetail.PhoneNumber); 
-                cmd.Parameters.AddWithValue("@DOB", patientDetail.DOB); 
+                cmd.Parameters.AddWithValue("@PhoneNumber", patientDetail.PhoneNumber);
+                cmd.Parameters.AddWithValue("@DOB", patientDetail.DOB);
                 cmd.Parameters.AddWithValue("@Gender", patientDetail.Gender);
                 cmd.Parameters.AddWithValue("@EmailId", patientDetail.EmailId);
 
@@ -179,27 +126,5 @@ namespace AppointmentSystem.Controllers
 
             return View(doctor);
         }
-
-        //// GET: Patient/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Patient/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
