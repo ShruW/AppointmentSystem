@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" />
+    <Property Name="DoctorId" Type="Int32" />
+    <Property Name="AppointmentDate" Type="DateTime" Precision="0" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DoctorDetail" Relationship="Self.FK__Appointme__Docto__3F466844" FromRole="Appointments" ToRole="DoctorDetails" />
+    <NavigationProperty Name="PatientDetail" Relationship="Self.FK__Appointme__Patie__3E52440B" FromRole="Appointments" ToRole="PatientDetails" />
+  </EntityType>
+  <EntityType Name="DoctorDetail">
+    <Key>
+      <PropertyRef Name="DId" />
+    </Key>
+    <Property Name="DId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Specialization" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ProfileImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Docto__3F466844" FromRole="DoctorDetails" ToRole="Appointments" />
+  </EntityType>
+  <EntityType Name="PatientDetail">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__3E52440B" FromRole="PatientDetails" ToRole="Appointments" />
+  </EntityType>
+  <Association Name="FK__Appointme__Docto__3F466844">
+    <End Role="DoctorDetails" Type="Self.DoctorDetail" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorDetails">
+        <PropertyRef Name="DId" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Patie__3E52440B">
+    <End Role="PatientDetails" Type="Self.PatientDetail" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientDetails">
+        <PropertyRef Name="PId" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppointmentDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="DoctorDetails" EntityType="Self.DoctorDetail" />
+    <EntitySet Name="PatientDetails" EntityType="Self.PatientDetail" />
+    <AssociationSet Name="FK__Appointme__Docto__3F466844" Association="Self.FK__Appointme__Docto__3F466844">
+      <End Role="DoctorDetails" EntitySet="DoctorDetails" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Patie__3E52440B" Association="Self.FK__Appointme__Patie__3E52440B">
+      <End Role="PatientDetails" EntitySet="PatientDetails" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

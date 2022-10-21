@@ -46,7 +46,7 @@ namespace AppointmentSystem.Controllers
                 SqlCommand cmd = new SqlCommand("spNewAppointment", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@PatientId", TempData["PatientId"]);
+                cmd.Parameters.AddWithValue("@PatientId", Session["PatientId"]);
                 cmd.Parameters.AddWithValue("@DoctorId", doctorsViewModel.SelectedDoctor);//formCollection["SelectedDoctor"]);
                 cmd.Parameters.AddWithValue("@AppointmentDate", doctorsViewModel.AppointmentDate); //formCollection["AppointmentDate"]);
                 cmd.Parameters.AddWithValue("@StartTime", doctorsViewModel.StartTime); //formCollection["StartTime"]); ;
@@ -65,14 +65,14 @@ namespace AppointmentSystem.Controllers
         {
             AppointmentDBContext dbcontext = new AppointmentDBContext();
             List<Appointment> appointments = dbcontext.Appointments.ToList();
-            List<Appointment> appointmentList = appointments.Where(x => x.PatientId == (int)TempData["PatientId"]).ToList();
+            List<Appointment> appointmentList = appointments.Where(x => x.PatientId == (int)Session["PatientId"]).ToList();
             return View(appointmentList);
         }
 
         [HttpGet]
         public ActionResult Edit()
         {
-            int id = (int)TempData["PatientId"];
+            int id = (int)Session["PatientId"];
             AppointmentDBContext dBContext = new AppointmentDBContext();
             PatientDetail patientDetail = dBContext.PatientDetails.Single(x => x.PId == id);
             return View(patientDetail);

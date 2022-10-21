@@ -40,7 +40,7 @@ namespace AppointmentSystem.Controllers
                 if (!(string.IsNullOrEmpty(cmd.Parameters["@Result"].Value.ToString())))
                 {
                     FormsAuthentication.SetAuthCookie(login.UserId, false);
-                    TempData["PatientId"]=(int)cmd.Parameters["@Result"].Value;
+                    Session["PatientId"]=(int)cmd.Parameters["@Result"].Value;
                     return RedirectToAction("NewAppointment", "Patient");
                 }
                 else
@@ -94,7 +94,7 @@ namespace AppointmentSystem.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            TempData.Remove("PatientId");
+            //TempData.Remove("PatientId");
             Session.Clear();
             Session.Abandon();
             return RedirectToAction("Login");

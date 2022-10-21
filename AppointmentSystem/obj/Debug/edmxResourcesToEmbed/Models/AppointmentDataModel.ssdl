@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientId" Type="int" />
+    <Property Name="DoctorId" Type="int" />
+    <Property Name="AppointmentDate" Type="date" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="Details" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DoctorDetails">
+    <Key>
+      <PropertyRef Name="DId" />
+    </Key>
+    <Property Name="DId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="EmailId" Type="varchar" MaxLength="20" />
+    <Property Name="Pwd" Type="varchar" MaxLength="20" />
+    <Property Name="Specialization" Type="varchar" MaxLength="30" />
+    <Property Name="ProfileImage" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PatientDetails">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="10" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="EmailId" Type="varchar" MaxLength="20" />
+    <Property Name="Pwd" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Appointme__Docto__3F466844">
+    <End Role="DoctorDetails" Type="Self.DoctorDetails" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorDetails">
+        <PropertyRef Name="DId" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="DoctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Appointme__Patie__3E52440B">
+    <End Role="PatientDetails" Type="Self.PatientDetails" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientDetails">
+        <PropertyRef Name="PId" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorDetails" EntityType="Self.DoctorDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientDetails" EntityType="Self.PatientDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Appointme__Docto__3F466844" Association="Self.FK__Appointme__Docto__3F466844">
+      <End Role="DoctorDetails" EntitySet="DoctorDetails" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Appointme__Patie__3E52440B" Association="Self.FK__Appointme__Patie__3E52440B">
+      <End Role="PatientDetails" EntitySet="PatientDetails" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
