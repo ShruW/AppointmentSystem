@@ -50,6 +50,8 @@ C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\ros
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\roslyn\vbc.rsp
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\roslyn\VBCSCompiler.exe
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.dll
+C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.SqlServer.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Helpers.dll
@@ -58,6 +60,8 @@ C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\Sys
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Webpages.Deployment.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Webpages.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Webpages.Razor.dll
+C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.xml
+C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.SqlServer.xml
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Razor.xml
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Webpages.xml
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\System.Web.Webpages.Deployment.xml
@@ -70,7 +74,3 @@ C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\obj\Deb
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\obj\Debug\AppointmentSystem.csproj.CopyComplete
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\obj\Debug\AppointmentSystem.dll
 C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\obj\Debug\AppointmentSystem.pdb
-C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.dll
-C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.SqlServer.dll
-C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.xml
-C:\Users\Shantanu Pande\source\repos\AppointmentSystem\AppointmentSystem\bin\EntityFramework.SqlServer.xml

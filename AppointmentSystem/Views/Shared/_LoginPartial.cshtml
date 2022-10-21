@@ -9,7 +9,10 @@
             <li>
                 @Html.ActionLink("Hello " + User.Identity.Name + "!", "Details", "Patient", routeValues: new { area = "" }, htmlAttributes: new { title = "Details" })
             </li>
-            <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
+            <li>
+                @Html.ActionLink("Log Off ", "Logout", "Home", routeValues: new { area = "" }, htmlAttributes: new { title = "logoutForm" })
+                @*<a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a>*@
+            </li>
         </ul>
     }
 }
