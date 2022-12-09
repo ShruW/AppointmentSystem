@@ -81,10 +81,6 @@ create or alter procedure spNewAppointment @PatientId int,@DoctorId int,@Appoint
 as
 insert into Appointments values(@PatientId,@DoctorId,@AppointmentDate,@StartTime,GETDATE(),@Details) 
 
-declare @PatientId int,@DoctorId int,@AppointmentDate date,@StartTime time,@Details varchar(50)
-exec spNewAppointment  @PatientId=1,@DoctorId =2,@AppointmentDate='10/10/2022',@StartTime='19:53' ,@Details='general'
-
-select * from Appointments where PatientId=@
 update DoctorDetails set ProfileImage='~/Images/Doctor1.jpg' where AppointmentId=10
 
 create or alter procedure spEditDetails @PId int, @FirstName varchar(20),@LastName varchar(20),@PhoneNumber varchar(10),@DOB date,@Gender char(1),@EmailId varchar(20)
